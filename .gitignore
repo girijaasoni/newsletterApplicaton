@@ -37,3 +37,4 @@
 /yarn.lock
 /config/database.yml
 Gemfile.lock
+package-lock.json

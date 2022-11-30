@@ -4,14 +4,7 @@ import "@patternfly/react-core/dist/styles/base.css";
 import { Button } from '@patternfly/react-core';
 
 
-function App() {
-    return (
-        <div>
-             <Button variant="primary">PF check</Button>
-        </div>
-       
-    );
-}
+const App = () => <Button variant="primary">PF check</Button>
 
 ReactDOM.render(
     <App />,

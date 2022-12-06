@@ -62,6 +62,7 @@ group :development do
 
   # add RuboCop gems
   gem "rubocop"
+  gem "rubocop-i18n"
   gem "rubocop-minitest"
   gem "rubocop-performance"
   gem "rubocop-rails"

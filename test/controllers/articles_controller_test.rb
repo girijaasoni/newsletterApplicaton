@@ -7,17 +7,21 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
 
   test "should get index" do
     get articles_url
+
     assert_response :success
   end
 
   test "should get new" do
     get new_article_url
+
     assert_response :success
   end
 
   test "should create article" do
     assert_difference("Article.count") do
-      post articles_url, params: { article: { article_body: @article.article_body, article_title: @article.article_title, creator_name: @article.creator_name } }
+      post articles_url,
+           params: { article: { article_body: @article.article_body, article_title: @article.article_title,
+                                creator_name: @article.creator_name } }
     end
 
     assert_redirected_to article_url(Article.last)
@@ -25,16 +29,21 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
 
   test "should show article" do
     get article_url(@article)
+
     assert_response :success
   end
 
   test "should get edit" do
     get edit_article_url(@article)
+
     assert_response :success
   end
 
   test "should update article" do
-    patch article_url(@article), params: { article: { article_body: @article.article_body, article_title: @article.article_title, creator_name: @article.creator_name } }
+    patch article_url(@article),
+          params: { article: { article_body: @article.article_body, article_title: @article.article_title,
+                               creator_name: @article.creator_name } }
+
     assert_redirected_to article_url(@article)
   end
 

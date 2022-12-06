@@ -3,6 +3,7 @@ require:
     - rubocop-rails
     - rubocop-rake
     - rubocop-minitest
+    - rubocop-i18n
 
 AllCops:
   NewCops: enable
@@ -791,3 +792,27 @@ Minitest/AssertRaisesWithRegexpArgument: # new in 0.22
 
 Minitest/EmptyLineBeforeAssertionMethods: # new in 0.23
   Enabled: true
+
+I18n/GetText:
+  Enabled: true
+
+I18n/RailsI18n:
+  Enabled: false
+
+
+I18n/GetText/DecorateString:
+  Enabled: false
+
+  # Disable the autocorrect
+  AutoCorrect: false
+I18n/GetText/DecorateFunctionMessage:
+  Enabled: false
+
+I18n/GetText/DecorateStringFormattingUsingInterpolation:
+  Enabled: false
+
+I18n/GetText/DecorateStringFormattingUsingPercent:
+  Enabled: false
+
+I18n/RailsI18n/DecorateString:
+  Enabled: false

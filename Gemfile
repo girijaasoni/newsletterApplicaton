@@ -61,6 +61,7 @@ group :development do
   gem "web-console"
 
   # add RuboCop gems
+  gem "rails-i18n"
   gem "rubocop"
   gem "rubocop-i18n"
   gem "rubocop-minitest"

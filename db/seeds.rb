@@ -9,19 +9,19 @@
 Article.destroy_all
 
 Article.create!([{
-    creator_name: "John Watson",
-    article_title: "Ruby on Rails with PostgreSQL",
-    article_body: "This is the main body of the article."
-},
-{
-    creator_name: "Shrek",
-    article_title: "Title of Shrek article",
-    article_body: "This is the main body of the article."
-},
-{
-    creator_name: "Emma",
-    article_title: "Title of Emmma article",
-    article_body: "This is the main body of the article."
-}])
+                  creator_name: "John Watson",
+                  article_title: "Ruby on Rails with PostgreSQL",
+                  article_body: "This is the main body of the article."
+                },
+                 {
+                   creator_name: "Shrek",
+                   article_title: "Title of Shrek article",
+                   article_body: "This is the main body of the article."
+                 },
+                 {
+                   creator_name: "Emma",
+                   article_title: "Title of Emmma article",
+                   article_body: "This is the main body of the article."
+                 }])
 
-p "Created #{Article.count} Articles."
+Rails.logger.debug { "Created #{Article.count} Articles." }

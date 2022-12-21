@@ -28,7 +28,7 @@ gem "stimulus-rails"
 gem "jbuilder"
 
 # runtime developer console and IRB alternative [https://github.com/pry/pry]
-gem 'pry', '~> 0.13.1'
+gem "pry", "~> 0.13.1"
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"

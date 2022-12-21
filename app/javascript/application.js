@@ -1,8 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import '@patternfly/react-core/dist/styles/base.css';
-import { Button } from '@patternfly/react-core';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import FullArticle from './pages/fullArticle.js';
+import Home from './pages/home.js';
 
-const App = () => <Button variant="primary">PF check</Button>;
+const App = () => {
+  return (
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/fullArticle/:id" element={<FullArticle />} />
+        </Routes>
+      </BrowserRouter>
+    </>
+  );
+};
 
 ReactDOM.render(<App />, document.getElementById('root'));

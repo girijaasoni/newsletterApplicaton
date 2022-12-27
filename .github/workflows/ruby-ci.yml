@@ -43,6 +43,7 @@ jobs:
             POSTGRES_USER: postgres
             POSTGRES_PASSWORD: postgres
         run: |
+          cp config/database.yml.example config/database.yml
           bundle exec rake db:create
           bundle exec rails db:migrate
           RAILS_ENV=test bundle exec rake

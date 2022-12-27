@@ -15,9 +15,9 @@ class ArticlesTest < ApplicationSystemTestCase
     visit articles_url
     click_on "New article"
 
-    fill_in "Article body", with: @article.article_body
-    fill_in "Article title", with: @article.article_title
-    fill_in "Creator name", with: @article.creator_name
+    fill_in "Article body", with: @article.body
+    fill_in "Article title", with: @article.title
+    fill_in "Creator name", with: @article.creator
     click_on "Create Article"
 
     assert_text "Article was successfully created"
@@ -28,9 +28,9 @@ class ArticlesTest < ApplicationSystemTestCase
     visit article_url(@article)
     click_on "Edit this article", match: :first
 
-    fill_in "Article body", with: @article.article_body
-    fill_in "Article title", with: @article.article_title
-    fill_in "Creator name", with: @article.creator_name
+    fill_in "Article body", with: @article.body
+    fill_in "Article title", with: @article.title
+    fill_in "Creator name", with: @article.creator
     click_on "Update Article"
 
     assert_text "Article was successfully updated"

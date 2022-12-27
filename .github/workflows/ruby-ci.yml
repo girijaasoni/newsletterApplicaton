@@ -41,11 +41,12 @@ jobs:
           cp config/database.yml.example config/database.yml
           bundle exec rake db:create
           bundle exec rails db:migrate
+          RAILS_ENV=test bundle exec rake
         env:
           DATABASE_URL: postgres://postgres:@localhost:5432/test
           RAILS_ENV: test
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
 
-      - name: Run tests
-        run: bundle exec rake test
+      # - name: Run tests
+      #   run: bundle exec rake test

@@ -6,6 +6,6 @@ one:
   body: MyText
 
 two:
-  name: MyString
+  creator: MyString
   title: MyString
   body: MyText

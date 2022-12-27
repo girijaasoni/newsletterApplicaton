@@ -7,21 +7,13 @@ default: &default
 development:
   <<: *default
   database: newsletterApplicaton_development
-  username: #databaseRoleName
-  password: #databasePassword
-  host: localhost
   port: 5432
 
 test:
   <<: *default
   database: newsletterApplicaton_test
-  host: localhost
   port: 5432
-  username: #databaseRoleName
-  password: #databasePassword
 
 production:
   <<: *default
   database: newsletterApplicaton_production
-  username: newsletterApplicaton
-  password: <%= ENV["NEWSLETTERAPPLICATON_DATABASE_PASSWORD"] %>

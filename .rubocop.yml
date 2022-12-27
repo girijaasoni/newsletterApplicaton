@@ -84,15 +84,6 @@ Rails/ExpandedDateRange: # new in 2.11
 Rails/FindById: # new in 2.7
   Enabled: true
 
-Rails/I18nLazyLookup: # new in 2.14
-  Enabled: true
-
-Rails/I18nLocaleAssignment: # new in 2.11
-  Enabled: true
-
-Rails/I18nLocaleTexts: # new in 2.14
-  Enabled: true
-
 Rails/Inquiry: # new in 2.7
   Enabled: true
 
@@ -130,9 +121,6 @@ Rails/RootJoinChain: # new in 2.13
   Enabled: true
 
 Rails/RootPublicPath: # new in 2.15
-  Enabled: true
-
-Rails/ShortI18n: # new in 2.7
   Enabled: true
 
 Rails/SquishedSQLHeredocs: # new in 2.8
@@ -192,6 +180,8 @@ Rails/WhereMissing: # new in 2.16
 Rails/WhereNotWithMultipleConditions: # new in 2.17
   Enabled: true
 
+Rails/I18nLocaleTexts:
+  Enabled: false
 
 Rails/Present:
   Enabled: true

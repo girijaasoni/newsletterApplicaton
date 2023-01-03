@@ -11,38 +11,37 @@ const FullArticle = () => {
   const handleDescriptionChange = (description) => {
     setDescription(description);
   };
+
   return (
-    <>
-      <Form isWidthLimited>
-        <FormGroup
-          label="Article title"
+    <Form isWidthLimited>
+      <FormGroup
+        label="Article title"
+        isRequired
+        fieldId="horizontal-form-name"
+        helperText="Include the title of the article.">
+        <TextInput
+          value={title}
           isRequired
-          fieldId="horizontal-form-name"
-          helperText="Include the title of the article.">
-          <TextInput
-            value={title}
-            isRequired
-            type="text"
-            id="horizontal-form-name"
-            aria-describedby="horizontal-form-name-helper"
-            name="horizontal-form-name"
-            onChange={handleTitleChange}
-          />
-        </FormGroup>
-        <FormGroup label="Article description" fieldId="horizontal-form-exp">
-          <TextArea
-            value={description}
-            onChange={handleDescriptionChange}
-            id="horizontal-form-exp"
-            name="horizontal-form-exp"
-          />
-        </FormGroup>
-        <ActionGroup>
-          <Button variant="primary">Submit</Button>
-          <Button variant="link">Cancel</Button>
-        </ActionGroup>
-      </Form>
-    </>
+          type="text"
+          id="horizontal-form-name"
+          aria-describedby="horizontal-form-name-helper"
+          name="horizontal-form-name"
+          onChange={handleTitleChange}
+        />
+      </FormGroup>
+      <FormGroup label="Article description" fieldId="horizontal-form-exp">
+        <TextArea
+          value={description}
+          onChange={handleDescriptionChange}
+          id="horizontal-form-exp"
+          name="horizontal-form-exp"
+        />
+      </FormGroup>
+      <ActionGroup>
+        <Button variant="primary">Submit</Button>
+        <Button variant="link">Cancel</Button>
+      </ActionGroup>
+    </Form>
   );
 };
 export default FullArticle;

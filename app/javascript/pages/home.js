@@ -2,6 +2,7 @@ import React from 'react';
 import '@patternfly/react-core/dist/styles/base.css';
 import { Gallery, GalleryItem, Text } from '@patternfly/react-core';
 import ArticleCard from '../components/articleCard.js';
+import ArticlesForm from '../components/ArticlesForm.js';
 import previewImage from '../../assets/images/img1.png';
 import colors from '../utils/colors.js';
 import { useNavigate } from 'react-router-dom';
@@ -21,6 +22,7 @@ const Home = () => {
   return (
     <>
       <Text style={styles.headerText}>Articles for you!!!</Text>
+      <ArticlesForm />
       <Gallery
         hasGutter
         style={{ marginInline: '3%' }}

@@ -6,6 +6,7 @@
     "@hotwired/turbo-rails": "^7.2.4",
     "@patternfly/react-core": "^4.264.0",
     "css-loader": "^6.7.2",
+    "prop-types": "^15.8.1",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "style-loader": "^3.3.1",
@@ -23,6 +24,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.31.11",
     "file-loader": "^6.2.0",
+    "prettier": "2.8.0",
  
     "react-router-dom": "^6.4.5"
   },

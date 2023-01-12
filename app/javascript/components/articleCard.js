@@ -1,9 +1,7 @@
 import React from 'react';
 import { Card, CardTitle, CardBody, CardFooter, Text, TextVariants } from '@patternfly/react-core';
-<<<<<<< HEAD
 import '@patternfly/react-core/dist/styles/base.css';
-=======
->>>>>>> 495ed69 (UI template with patternfly and Navigation setup)
+import PropTypes from 'prop-types';
 import colors from '../utils/colors';
 const styles = {
   card: {
@@ -31,26 +29,8 @@ const styles = {
   body: { color: colors.appGrey, alignSelf: 'center', fontSize: 20 },
   footer: { color: colors.appLightGrey, alignSelf: 'flex-end', margin: 5, fontSize: 10 }
 };
-const ArticleCard = ({ id, title, body, footer, thumbnail, onCardClick }) => {
+const ArticleCard = ({ title, body, footer, thumbnail, onCardClick }) => {
   return (
-<<<<<<< HEAD
-    <>
-      <Card style={styles.card} onClick={onCardClick}>
-        <CardTitle>
-          <Text component={TextVariants.h2} style={styles.titleText}>
-            {title}
-          </Text>
-        </CardTitle>
-        <img src={thumbnail} style={styles.thumbnailImg} />
-        <CardBody>
-          <Text style={styles.body}>{body}</Text>
-        </CardBody>
-        <CardFooter>
-          <Text style={styles.footer}>{footer}</Text>
-        </CardFooter>
-      </Card>
-    </>
-=======
     <Card style={styles.card} onClick={onCardClick}>
       <CardTitle>
         <Text component={TextVariants.h2} style={styles.titleText}>
@@ -65,7 +45,13 @@ const ArticleCard = ({ id, title, body, footer, thumbnail, onCardClick }) => {
         <Text style={styles.footer}>{footer}</Text>
       </CardFooter>
     </Card>
->>>>>>> 495ed69 (UI template with patternfly and Navigation setup)
   );
+};
+ArticleCard.propTypes = {
+  title: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+  footer: PropTypes.string.isRequired,
+  thumbnail: PropTypes.string.isRequired,
+  onCardClick: PropTypes.func.isRequired
 };
 export default ArticleCard;

@@ -1,11 +1,14 @@
-import React from 'react';
-import { Gallery, GalleryItem, Text } from '@patternfly/react-core';
+import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import ArticleCard from '../components/articleCard.js';
+import '@patternfly/react-core/dist/styles/base.css';
+import PlusCircleIcon from '@patternfly/react-icons/dist/esm/icons/plus-circle-icon';
 import previewImage from '../../assets/images/img1.png';
 import colors from '../utils/colors.js';
-import { useNavigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { Gallery, GalleryItem, Text, Button } from '@patternfly/react-core';
+import ArticleForm from '../components/ArticleForm.js';
+
 const styles = {
   headerText: {
     fontWeight: 'bolder',
@@ -15,9 +18,16 @@ const styles = {
     fontSize: '50px'
   }
 };
+
 const Home = () => {
   const navigate = useNavigate();
   const [articles, setArticles] = useState([]);
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  const handleModalToggle = () => {
+    setModalOpen((prevValue) => !prevValue);
+  };
+
   useEffect(() => {
     axios
       .get('/articles')
@@ -29,7 +39,14 @@ const Home = () => {
 
   return (
     <>
-      <Text style={styles.headerText}>Articles for you!!!</Text>
+      <Text style={styles.headerText}>Satellite Newsletter</Text>
+      <React.Fragment>
+        <Button variant="link" icon={<PlusCircleIcon />} onClick={handleModalToggle}>
+          Create Article
+        </Button>{' '}
+        <ArticleForm isOpen={isModalOpen} handleModalToggle={handleModalToggle} />
+      </React.Fragment>
+
       <Gallery
         hasGutter
         style={{ marginInline: '3%' }}

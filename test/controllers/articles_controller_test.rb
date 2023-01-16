@@ -21,10 +21,10 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_difference("Article.count") do
       post articles_url,
            params: { article: { body: @article.body, title: @article.title,
-                                creator: @article.creator } }
+                                creator: @article.creator }, format: :json }
     end
 
-    assert_redirected_to article_url(Article.last)
+    assert_response :success
   end
 
   test "should show article" do

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, CardTitle, CardBody, CardFooter, Text, TextVariants } from '@patternfly/react-core';
 import colors from '../utils/colors';
+import PropTypes from 'prop-types';
 const styles = {
   card: {
     borderRadius: 10,
@@ -29,7 +30,7 @@ const styles = {
 };
 const ArticleCard = ({ id, title, body, footer, thumbnail, onCardClick }) => {
   return (
-    <Card style={styles.card} onClick={onCardClick}>
+    <Card style={styles.card} onClick={onCardClick} id={id}>
       <CardTitle>
         <Text component={TextVariants.h2} style={styles.titleText}>
           {title}
@@ -44,5 +45,13 @@ const ArticleCard = ({ id, title, body, footer, thumbnail, onCardClick }) => {
       </CardFooter>
     </Card>
   );
+};
+ArticleCard.propTypes = {
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+  footer: PropTypes.string.isRequired,
+  thumbnail: PropTypes.string.isRequired,
+  onCardClick: PropTypes.func.isRequired
 };
 export default ArticleCard;

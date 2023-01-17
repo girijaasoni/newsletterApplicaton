@@ -7,9 +7,14 @@ const styles = {
     padding: '2%'
   }
 };
-const PfButton = ({ buttonText, isSmall, variant, onBtnClick }) => {
+const PfButton = ({ buttonText, isSmall, variant, onBtnClick, ...props }) => {
   return (
-    <Button variant={variant} style={styles.button} isSmall={isSmall} onClick={onBtnClick}>
+    <Button
+      variant={variant}
+      style={styles.button}
+      isSmall={isSmall}
+      onClick={onBtnClick}
+      {...props}>
       {buttonText}
     </Button>
   );

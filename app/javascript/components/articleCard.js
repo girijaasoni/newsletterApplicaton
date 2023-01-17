@@ -31,32 +31,31 @@ const styles = {
   },
   body: { color: colors.appGrey, alignSelf: 'center', fontSize: 20, marginBottom: '2%' }
 };
-const ArticleCard = ({ id, title, body, thumbnail, onShowClick }) => {
-  return (
-    <Card style={styles.card} id={id}>
-      <CardTitle>
-        <Text component={TextVariants.h2} style={styles.titleText}>
-          {title}
-        </Text>
-      </CardTitle>
-      <img src={thumbnail} style={styles.thumbnailImg} />
-      <CardBody>
-        <Text style={styles.body}>{body}</Text>
-      </CardBody>
-      <CardFooter>
-        <view style={styles.btn}>
-          <PfButton buttonText="show" isSmall variant="primary" onBtnClick={onShowClick} />
-        </view>
-        <view style={styles.btn}>
-          <PfButton buttonText="edit" isSmall variant="secondary" />
-        </view>
-        <view style={styles.btn}>
-          <PfButton buttonText="delete" isSmall variant="danger" />
-        </view>
-      </CardFooter>
-    </Card>
-  );
-};
+const ArticleCard = ({ id, title, body, thumbnail, onShowClick }) => (
+  <Card style={styles.card} id={id}>
+    <CardTitle>
+      <Text component={TextVariants.h2} style={styles.titleText}>
+        {title}
+      </Text>
+    </CardTitle>
+    <img src={thumbnail} style={styles.thumbnailImg} />
+    <CardBody>
+      <Text style={styles.body}>{body}</Text>
+    </CardBody>
+    <CardFooter>
+      <view style={styles.btn}>
+        <PfButton buttonText="show" isSmall variant="primary" onBtnClick={onShowClick} />
+      </view>
+      <view style={styles.btn}>
+        <PfButton buttonText="edit" isSmall variant="secondary" />
+      </view>
+      <view style={styles.btn}>
+        <PfButton buttonText="delete" isSmall variant="danger" />
+      </view>
+    </CardFooter>
+  </Card>
+);
+
 ArticleCard.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,

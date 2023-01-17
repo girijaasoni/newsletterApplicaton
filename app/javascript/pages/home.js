@@ -20,11 +20,7 @@ const Home = () => {
   const [articles, setArticles] = useState([]);
   useEffect(() => {
     axios
-      .get('/articles', {
-        headers: {
-          'content-type': 'application/json'
-        }
-      })
+      .get('/articles')
       .then((response) => {
         setArticles(response.data);
       })
@@ -46,18 +42,22 @@ const Home = () => {
           xl: '300px',
           '2xl': '500px'
         }}>
-        {articles.map((item) => {
+        {articles.map(({ id, title, body, date }) => {
           return (
-            <GalleryItem key={`article-${item.id}`}>
+            <GalleryItem key={`article-${id}`}>
               <ArticleCard
-                id={item.id}
-                title={item.title}
-                body={item.body}
-                footer={item.date}
-                onCardClick={() =>
-                  navigate(`/articles/${item.id}`, {
+                id={id}
+                title={title}
+                body={body}
+                onShowClick={() =>
+                  navigate(`/articles/${id}`, {
                     state: {
-                      article: item
+                      article: {
+                        id: id,
+                        title: title,
+                        body: body,
+                        date: date
+                      }
                     }
                   })
                 }

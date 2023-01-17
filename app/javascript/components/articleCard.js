@@ -2,11 +2,15 @@ import React from 'react';
 import { Card, CardTitle, CardBody, CardFooter, Text, TextVariants } from '@patternfly/react-core';
 import colors from '../utils/colors';
 import PropTypes from 'prop-types';
+import PfButton from './pfButton';
 const styles = {
   card: {
     borderRadius: 10,
     margin: '1%',
     padding: 20
+  },
+  btn: {
+    marginRight: 10
   },
   titleText: {
     color: colors.appBlue,
@@ -25,12 +29,11 @@ const styles = {
     maxHeight: '300px',
     minHeight: '200px'
   },
-  body: { color: colors.appGrey, alignSelf: 'center', fontSize: 20 },
-  footer: { color: colors.appLightGrey, alignSelf: 'flex-end', margin: 5, fontSize: 10 }
+  body: { color: colors.appGrey, alignSelf: 'center', fontSize: 20, marginBottom: '2%' }
 };
-const ArticleCard = ({ id, title, body, footer, thumbnail, onCardClick }) => {
+const ArticleCard = ({ id, title, body, thumbnail, onShowClick }) => {
   return (
-    <Card style={styles.card} onClick={onCardClick} id={id}>
+    <Card style={styles.card} id={id}>
       <CardTitle>
         <Text component={TextVariants.h2} style={styles.titleText}>
           {title}
@@ -41,7 +44,15 @@ const ArticleCard = ({ id, title, body, footer, thumbnail, onCardClick }) => {
         <Text style={styles.body}>{body}</Text>
       </CardBody>
       <CardFooter>
-        <Text style={styles.footer}>{footer}</Text>
+        <view style={styles.btn}>
+          <PfButton buttonText="show" isSmall variant="primary" onBtnClick={onShowClick} />
+        </view>
+        <view style={styles.btn}>
+          <PfButton buttonText="edit" isSmall variant="secondary" />
+        </view>
+        <view style={styles.btn}>
+          <PfButton buttonText="delete" isSmall variant="danger" />
+        </view>
       </CardFooter>
     </Card>
   );
@@ -50,8 +61,7 @@ ArticleCard.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
-  footer: PropTypes.string.isRequired,
   thumbnail: PropTypes.string.isRequired,
-  onCardClick: PropTypes.func.isRequired
+  onShowClick: PropTypes.func.isRequired
 };
 export default ArticleCard;

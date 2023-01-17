@@ -27,14 +27,18 @@ const styles = {
   }
 };
 const FullArticle = () => {
-  const { state } = useLocation();
+  const {
+    state: {
+      article: { title, body }
+    }
+  } = useLocation();
   return (
     <>
-      <Text style={styles.title}>{state.article.title}</Text>
+      <Text style={styles.title}>{title}</Text>
 
       <img src={previewImage} width={'500px'} style={styles.img} />
 
-      <Text style={styles.body}>{state.article.body}</Text>
+      <Text style={styles.body}>{body}</Text>
     </>
   );
 };

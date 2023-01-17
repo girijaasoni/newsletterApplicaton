@@ -5,14 +5,15 @@
     "@hotwired/stimulus": "^3.1.1",
     "@hotwired/turbo-rails": "^7.2.4",
     "@patternfly/react-core": "^4.264.0",
+    "axios": "^1.2.2",
     "css-loader": "^6.7.2",
+    "prettier": "2.8.0",
     "prop-types": "^15.8.1",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "style-loader": "^3.3.1",
     "webpack": "^5.75.0",
-    "webpack-cli": "^5.0.0",
-    "prettier": "2.8.0"
+    "webpack-cli": "^5.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.2",
@@ -24,7 +25,6 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.31.11",
     "file-loader": "^6.2.0",
- 
     "react-router-dom": "^6.4.5"
   },
   "scripts": {

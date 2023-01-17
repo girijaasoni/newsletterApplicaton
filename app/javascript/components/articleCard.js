@@ -4,7 +4,8 @@ import colors from '../utils/colors';
 const styles = {
   card: {
     borderRadius: 10,
-    margin: '1%'
+    margin: '1%',
+    padding: 20
   },
   titleText: {
     color: colors.appBlue,
@@ -18,7 +19,6 @@ const styles = {
     textOverflow: 'ellipsis'
   },
   thumbnailImg: {
-    marginInline: 20,
     borderRadius: 10,
     marginBottom: 10,
     maxHeight: '300px',

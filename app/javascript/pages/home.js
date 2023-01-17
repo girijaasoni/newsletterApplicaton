@@ -4,7 +4,8 @@ import ArticleCard from '../components/articleCard.js';
 import previewImage from '../../assets/images/img1.png';
 import colors from '../utils/colors.js';
 import { useNavigate } from 'react-router-dom';
-import articles from '../utils/articles.js';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 const styles = {
   headerText: {
     fontWeight: 'bolder',
@@ -16,6 +17,19 @@ const styles = {
 };
 const Home = () => {
   const navigate = useNavigate();
+  const [articles, setArticles] = useState([]);
+  useEffect(() => {
+    axios
+      .get('/articles', {
+        headers: {
+          'content-type': 'application/json'
+        }
+      })
+      .then((response) => {
+        setArticles(response.data);
+      })
+      .catch((response) => console.log(response));
+  }, [articles.length]);
 
   return (
     <>
@@ -38,10 +52,10 @@ const Home = () => {
               <ArticleCard
                 id={item.id}
                 title={item.title}
-                body={item.bodyPreview}
+                body={item.body}
                 footer={item.date}
                 onCardClick={() =>
-                  navigate(`/fullArticle/${item.id}`, {
+                  navigate(`/articles/${item.id}`, {
                     state: {
                       article: item
                     }

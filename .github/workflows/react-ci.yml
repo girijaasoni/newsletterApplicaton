@@ -1,0 +1,16 @@
+name: React CI
+
+on: pull_request
+
+jobs:
+  react_test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+      - name: install node modules
+        run: npm install
+      - name: Run tests
+        run: npm run test

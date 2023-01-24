@@ -6,7 +6,7 @@ import '@patternfly/react-core/dist/styles/base.css';
 import PlusCircleIcon from '@patternfly/react-icons/dist/esm/icons/plus-circle-icon';
 import previewImage from '../../assets/images/img1.png';
 import colors from '../utils/colors.js';
-import { Gallery, GalleryItem, Text, Button } from '@patternfly/react-core';
+import { Gallery, GalleryItem, Text } from '@patternfly/react-core';
 import ArticleForm from '../components/ArticleForm.js';
 import PfButton from '../components/pfButton.js';
 
@@ -33,8 +33,6 @@ const Home = () => {
     axios
       .get('/articles')
       .then((response) => {
-        console.log('here');
-        console.log(response.data);
         setArticles(response.data);
       })
       .catch((response) => console.log(response));

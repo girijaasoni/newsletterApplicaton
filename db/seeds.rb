@@ -25,3 +25,16 @@ Article.create!([{
                  }])
 
 Rails.logger.debug { "Created #{Article.count} Articles." }
+User.destroy_all
+
+User.create!([{
+                  username: "user#1"
+                },
+                 {
+                   username: "user#2"
+                 },
+                 {
+                   username: "user#3"
+                 }])
+
+Rails.logger.debug { "Created #{User.count} Users." }

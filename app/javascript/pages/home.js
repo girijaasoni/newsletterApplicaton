@@ -8,6 +8,7 @@ import previewImage from '../../assets/images/img1.png';
 import colors from '../utils/colors.js';
 import { Gallery, GalleryItem, Text, Button } from '@patternfly/react-core';
 import ArticleForm from '../components/ArticleForm.js';
+import PfButton from '../components/pfButton.js';
 
 const styles = {
   headerText: {
@@ -32,6 +33,8 @@ const Home = () => {
     axios
       .get('/articles')
       .then((response) => {
+        console.log('here');
+        console.log(response.data);
         setArticles(response.data);
       })
       .catch((response) => console.log(response));
@@ -41,9 +44,13 @@ const Home = () => {
     <>
       <Text style={styles.headerText}>Satellite Newsletter</Text>
       <React.Fragment>
-        <Button variant="link" icon={<PlusCircleIcon />} onClick={handleModalToggle}>
-          Create Article
-        </Button>{' '}
+        <PfButton
+          variant="link"
+          icon={<PlusCircleIcon />}
+          onBtnClick={handleModalToggle}
+          buttonText="Create new article"
+        />
+
         <ArticleForm isOpen={isModalOpen} handleModalToggle={handleModalToggle} />
       </React.Fragment>
 
@@ -59,13 +66,14 @@ const Home = () => {
           xl: '300px',
           '2xl': '500px'
         }}>
-        {articles.map(({ id, title, body, date }) => {
+        {articles.map(({ id, title, body, date, creator }) => {
           return (
             <GalleryItem key={`article-${id}`}>
               <ArticleCard
                 id={id}
                 title={title}
                 body={body}
+                creator={creator}
                 onShowClick={() =>
                   navigate(`/articles/${id}`, {
                     state: {
@@ -73,7 +81,8 @@ const Home = () => {
                         id: id,
                         title: title,
                         body: body,
-                        date: date
+                        date: date,
+                        creator: creator
                       }
                     }
                   })

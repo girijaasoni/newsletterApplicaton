@@ -93,8 +93,8 @@ const ArticleForm = ({ isOpen, handleModalToggle }) => {
 };
 
 ArticleForm.propTypes = {
-  isOpen: PropTypes.string.isRequired,
-  handleModalToggle: PropTypes.string.isRequired
+  isOpen: PropTypes.bool.isRequired,
+  handleModalToggle: PropTypes.func.isRequired
 };
 
 export default ArticleForm;

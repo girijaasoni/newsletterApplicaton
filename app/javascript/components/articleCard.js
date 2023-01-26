@@ -10,7 +10,8 @@ const styles = {
     padding: 20
   },
   btn: {
-    marginRight: 10
+    marginRight: 10,
+    padding: '5px'
   },
   titleText: {
     color: colors.appBlue,
@@ -43,21 +44,21 @@ const ArticleCard = ({ id, title, body, thumbnail, onShowClick }) => (
       <Text style={styles.body}>{body}</Text>
     </CardBody>
     <CardFooter>
-      <view style={styles.btn}>
-        <PfButton buttonText="show" isSmall variant="primary" onBtnClick={onShowClick} />
-      </view>
-      <view style={styles.btn}>
-        <PfButton buttonText="edit" isSmall variant="secondary" />
-      </view>
-      <view style={styles.btn}>
-        <PfButton buttonText="delete" isSmall variant="danger" />
-      </view>
+      <PfButton
+        style={styles.btn}
+        buttonText="show"
+        isSmall
+        variant="primary"
+        onBtnClick={onShowClick}
+      />
+      <PfButton style={styles.btn} buttonText="edit" isSmall variant="secondary" />
+      <PfButton style={styles.btn} buttonText="delete" isSmall variant="danger" />
     </CardFooter>
   </Card>
 );
 
 ArticleCard.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
   thumbnail: PropTypes.string.isRequired,

@@ -57,7 +57,7 @@ const ArticleCard = ({ id, title, body, thumbnail, onShowClick }) => (
 );
 
 ArticleCard.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
   thumbnail: PropTypes.string.isRequired,

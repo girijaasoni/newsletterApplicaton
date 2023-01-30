@@ -1,7 +1,9 @@
 import axios from 'axios';
-import React, { useState } from 'react';
-import { Form, FormGroup, TextInput, Modal, ModalVariant, Button } from '@patternfly/react-core';
+import React, { useState, useEffect } from 'react';
+import { Form, FormGroup, TextInput, Modal, ModalVariant } from '@patternfly/react-core';
 import PropTypes from 'prop-types';
+import { Dropdown, DropdownToggle, DropdownGroup, DropdownItem } from '@patternfly/react-core';
+import PfButton from './pfButton';
 
 const ArticleForm = ({ isOpen, handleModalToggle }) => {
   const [data, setData] = useState({
@@ -9,20 +11,50 @@ const ArticleForm = ({ isOpen, handleModalToggle }) => {
     body: '',
     creator: ''
   });
+  const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
+  const [users, setUsers] = useState([]);
 
+  useEffect(() => {
+    axios
+      .get('/users')
+      .then((response) => {
+        setUsers(response.data);
+        console.log(users);
+      })
+      .catch((response) => console.log(response));
+  }, [users.length]);
+  const [selectedUser, setSelectedUser] = useState('');
   const handleChange = (value, key) => {
     setData({
       ...data,
       [key]: value
     });
   };
+  const onToggle = (isDropdownOpen) => {
+    setIsDropdownOpen(isDropdownOpen);
+  };
+
+  const onSelect = (event) => {
+    const value = event.target.innerHTML;
+    setSelectedUser(value);
+    setIsDropdownOpen(false);
+  };
+  const dropdownItems = [
+    <DropdownGroup key="group 1">
+      {users.map((user) => (
+        <DropdownItem key="group 1 action" component="button">
+          {user.username}
+        </DropdownItem>
+      ))}
+    </DropdownGroup>
+  ];
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const userData = {
       title: data.title,
       body: data.body,
-      creator: data.creator
+      creator: selectedUser
     };
     axios
       .post('/articles', userData)
@@ -51,12 +83,10 @@ const ArticleForm = ({ isOpen, handleModalToggle }) => {
         isOpen={isOpen}
         onClose={handleModalToggle}
         actions={[
-          <Button key="create" variant="primary" form="modal-with-form-form" onClick={handleSubmit}>
-            Confirm
-          </Button>,
-          <Button key="cancel" variant="link" onClick={handleModalToggle}>
-            Cancel
-          </Button>
+          <>
+            <PfButton variant="primary" buttonText="Confirm" onBtnClick={handleSubmit} />
+            <PfButton variant="secondary" buttonText="Cancel" onBtnClick={handleModalToggle} />
+          </>
         ]}>
         <Form id="modal-with-form-form">
           <FormGroup label="Title" isRequired fieldId="modal-with-form-form-title">
@@ -78,12 +108,16 @@ const ArticleForm = ({ isOpen, handleModalToggle }) => {
             />
           </FormGroup>
           <FormGroup label="Creator" isRequired>
-            <TextInput
-              isRequired
-              id="modal-with-form-form-creator"
-              type="text"
-              value={data.creator}
-              onChange={(value) => handleChange(value, 'creator')}
+            <Dropdown
+              onSelect={onSelect}
+              toggle={
+                <DropdownToggle id="toggle-groups" onToggle={onToggle}>
+                  {selectedUser}
+                </DropdownToggle>
+              }
+              isOpen={isDropdownOpen}
+              dropdownItems={dropdownItems}
+              isGrouped
             />
           </FormGroup>
         </Form>

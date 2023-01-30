@@ -6,8 +6,9 @@ import '@patternfly/react-core/dist/styles/base.css';
 import PlusCircleIcon from '@patternfly/react-icons/dist/esm/icons/plus-circle-icon';
 import previewImage from '../../assets/images/img1.png';
 import colors from '../utils/colors.js';
-import { Gallery, GalleryItem, Text, Button } from '@patternfly/react-core';
+import { Gallery, GalleryItem, Text } from '@patternfly/react-core';
 import ArticleForm from '../components/ArticleForm.js';
+import PfButton from '../components/pfButton.js';
 
 const styles = {
   headerText: {
@@ -41,9 +42,13 @@ const Home = () => {
     <>
       <Text style={styles.headerText}>Satellite Newsletter</Text>
       <React.Fragment>
-        <Button variant="link" icon={<PlusCircleIcon />} onClick={handleModalToggle}>
-          Create Article
-        </Button>{' '}
+        <PfButton
+          variant="link"
+          icon={<PlusCircleIcon />}
+          onBtnClick={handleModalToggle}
+          buttonText="Create new article"
+        />
+
         <ArticleForm isOpen={isModalOpen} handleModalToggle={handleModalToggle} />
       </React.Fragment>
 
@@ -59,13 +64,14 @@ const Home = () => {
           xl: '300px',
           '2xl': '500px'
         }}>
-        {articles.map(({ id, title, body, date }) => {
+        {articles.map(({ id, title, body, date, creator }) => {
           return (
             <GalleryItem key={`article-${id}`}>
               <ArticleCard
                 id={id}
                 title={title}
                 body={body}
+                creator={creator}
                 onShowClick={() =>
                   navigate(`/articles/${id}`, {
                     state: {
@@ -73,7 +79,8 @@ const Home = () => {
                         id: id,
                         title: title,
                         body: body,
-                        date: date
+                        date: date,
+                        creator: creator
                       }
                     }
                   })

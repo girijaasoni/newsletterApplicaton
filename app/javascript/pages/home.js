@@ -27,6 +27,15 @@ const Home = () => {
   const handleModalToggle = () => {
     setModalOpen((prevValue) => !prevValue);
   };
+  const handleDelete = (id) => {
+    axios
+      .delete(`/articles/${id}`)
+      .then((response) => {
+        console.log(response);
+        console.log('item was deleted!');
+      })
+      .catch((response) => console.log(response));
+  };
 
   useEffect(() => {
     axios
@@ -43,7 +52,7 @@ const Home = () => {
       <React.Fragment>
         <Button variant="link" icon={<PlusCircleIcon />} onClick={handleModalToggle}>
           Create Article
-        </Button>{' '}
+        </Button>
         <ArticleForm isOpen={isModalOpen} handleModalToggle={handleModalToggle} />
       </React.Fragment>
 
@@ -78,6 +87,7 @@ const Home = () => {
                     }
                   })
                 }
+                onDeleteClick={() => handleDelete(id)}
                 thumbnail={previewImage}
               />
             </GalleryItem>

@@ -32,7 +32,7 @@ const styles = {
   },
   body: { color: colors.appGrey, alignSelf: 'center', fontSize: 20, marginBottom: '2%' }
 };
-const ArticleCard = ({ id, title, body, thumbnail, onShowClick }) => (
+const ArticleCard = ({ id, title, body, thumbnail, onShowClick, onDeleteClick }) => (
   <Card style={styles.card} id={id}>
     <CardTitle>
       <Text component={TextVariants.h2} style={styles.titleText}>
@@ -52,7 +52,13 @@ const ArticleCard = ({ id, title, body, thumbnail, onShowClick }) => (
         onBtnClick={onShowClick}
       />
       <PfButton style={styles.btn} buttonText="edit" isSmall variant="secondary" />
-      <PfButton style={styles.btn} buttonText="delete" isSmall variant="danger" />
+      <PfButton
+        style={styles.btn}
+        buttonText="delete"
+        isSmall
+        variant="danger"
+        onBtnClick={onDeleteClick}
+      />
     </CardFooter>
   </Card>
 );
@@ -62,6 +68,7 @@ ArticleCard.propTypes = {
   title: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
   thumbnail: PropTypes.string.isRequired,
+  onDeleteClick: PropTypes.func.isRequired,
   onShowClick: PropTypes.func.isRequired
 };
 export default ArticleCard;
